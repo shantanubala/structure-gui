@@ -44,9 +44,9 @@ Enter the directory for builds:
 cd Builds/<config>-<arch>/Source
 ```
 
-```sh
+
 On release builds for Ubuntu, that would be:
-```
+
 
 ```sh
 cd Builds/release-x86_64/Source
