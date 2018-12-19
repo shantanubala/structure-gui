@@ -1,0 +1,13 @@
+diff -u -r glfw-3.2.1-a/CMakeLists.txt glfw-3.2.1-b/CMakeLists.txt
+--- glfw-3.2.1-a/CMakeLists.txt	2016-08-18 05:32:27.000000000 -0600
++++ glfw-3.2.1-b/CMakeLists.txt	2018-08-15 19:01:34.132411485 -0600
+@@ -147,7 +147,8 @@
+         message(STATUS "Using Mir for window creation")
+     else()
+         set(_GLFW_X11 1)
+-        message(STATUS "Using X11 for window creation")
++        # Patched out!
++        #message(STATUS "Using X11 for window creation")
+     endif()
+ else()
+     message(FATAL_ERROR "No supported platform was detected")

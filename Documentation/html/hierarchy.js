@@ -1,0 +1,36 @@
+var hierarchy =
+[
+    [ "ST::Acceleration", "struct_s_t_1_1_acceleration.html", null ],
+    [ "ST::AccelerometerEvent", "struct_s_t_1_1_accelerometer_event.html", null ],
+    [ "array", null, [
+      [ "ST::StringNBytes< N >", "struct_s_t_1_1_string_n_bytes.html", null ]
+    ] ],
+    [ "ST::Attitude", "struct_s_t_1_1_attitude.html", null ],
+    [ "ST::CaptureSession", "struct_s_t_1_1_capture_session.html", null ],
+    [ "ST::CaptureSessionDelegate", "struct_s_t_1_1_capture_session_delegate.html", null ],
+    [ "ST::CaptureSessionSample", "struct_s_t_1_1_capture_session_sample.html", null ],
+    [ "ST::CaptureSessionSettings", "struct_s_t_1_1_capture_session_settings.html", null ],
+    [ "ST::ColorFrame", "struct_s_t_1_1_color_frame.html", null ],
+    [ "ST::ConnectedSensorInfo", "struct_s_t_1_1_connected_sensor_info.html", null ],
+    [ "ST::CSVFileWriter", "struct_s_t_1_1_c_s_v_file_writer.html", null ],
+    [ "ST::DepthFrame", "struct_s_t_1_1_depth_frame.html", null ],
+    [ "ST::DeviceMotion", "struct_s_t_1_1_device_motion.html", null ],
+    [ "ST::DeviceMotionEvent", "struct_s_t_1_1_device_motion_event.html", null ],
+    [ "ST::GyroscopeEvent", "struct_s_t_1_1_gyroscope_event.html", null ],
+    [ "ST::InfraredFrame", "struct_s_t_1_1_infrared_frame.html", null ],
+    [ "ST::Intrinsics", "struct_s_t_1_1_intrinsics.html", null ],
+    [ "ST::MagneticField", "struct_s_t_1_1_magnetic_field.html", null ],
+    [ "ST::MultiCameraColorFrame", "struct_s_t_1_1_multi_camera_color_frame.html", null ],
+    [ "ST::OCCFileWriter", "struct_s_t_1_1_o_c_c_file_writer.html", null ],
+    [ "ST::CaptureSessionSettings::OCCPlaybackSettings", "struct_s_t_1_1_capture_session_settings_1_1_o_c_c_playback_settings.html", null ],
+    [ "ST::OnlineMeanEstimator", "struct_s_t_1_1_online_mean_estimator.html", null ],
+    [ "ST::OpenGLTexture", "struct_s_t_1_1_open_g_l_texture.html", null ],
+    [ "ST::PerformanceMonitor", "class_s_t_1_1_performance_monitor.html", null ],
+    [ "ST::ProfilingFileLogger", "struct_s_t_1_1_profiling_file_logger.html", null ],
+    [ "ST::RotationRate", "struct_s_t_1_1_rotation_rate.html", null ],
+    [ "ST::ScopeTimeForPerformanceMonitor", "class_s_t_1_1_scope_time_for_performance_monitor.html", null ],
+    [ "ST::CaptureSessionSettings::StructureCoreSettings", "struct_s_t_1_1_capture_session_settings_1_1_structure_core_settings.html", null ],
+    [ "ST::TimeCountDoNotUseDirectly", "class_s_t_1_1_time_count_do_not_use_directly.html", null ],
+    [ "ST::Vector2< Scalar >", "struct_s_t_1_1_vector2.html", null ],
+    [ "ST::Vector3< Scalar >", "struct_s_t_1_1_vector3.html", null ]
+];

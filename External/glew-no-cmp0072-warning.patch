@@ -1,0 +1,14 @@
+diff -u -r glew-2.1.0-a/build/cmake/CMakeLists.txt glew-2.1.0-b/build/cmake/CMakeLists.txt
+--- glew-2.1.0-a/build/cmake/CMakeLists.txt	2017-07-31 05:25:39.000000000 -0600
++++ glew-2.1.0-b/build/cmake/CMakeLists.txt	2018-08-15 18:45:54.701746804 -0600
+@@ -37,6 +37,10 @@
+ set (CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ 
++# Patched!
++if (NOT CMAKE_VERSION VERSION_LESS "3.11")
++    set(OpenGL_GL_PREFERENCE LEGACY)
++endif()
+ find_package (OpenGL REQUIRED)
+ 
+ # X11 required when builing visualinfo and glewinfo,

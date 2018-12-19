@@ -1,0 +1,23 @@
+diff -u -r glfw-3.2.1-a/CMakeLists.txt glfw-3.2.1-b/CMakeLists.txt
+--- glfw-3.2.1-a/CMakeLists.txt	2016-08-18 05:32:27.000000000 -0600
++++ glfw-3.2.1-b/CMakeLists.txt	2018-08-15 18:27:51.397406827 -0600
+@@ -4,10 +4,15 @@
+ 
+ cmake_minimum_required(VERSION 2.8.12)
+ 
+-if (NOT CMAKE_VERSION VERSION_LESS "3.0")
+-    # Until all major package systems have moved to CMake 3,
+-    # we stick with the older INSTALL_NAME_DIR mechanism
+-    cmake_policy(SET CMP0042 OLD)
++# Patched out to suppress CMP0042 deprecation warning
++#if (NOT CMAKE_VERSION VERSION_LESS "3.0")
++#    # Until all major package systems have moved to CMake 3,
++#    # we stick with the older INSTALL_NAME_DIR mechanism
++#    cmake_policy(SET CMP0042 OLD)
++#endif()
++if (APPLE)
++    # APPLE build may misbehave due to above patch
++    message(FATAL_ERROR "Building under 'APPLE' is not supported due to patching.")
+ endif()
+ 
+ set(GLFW_VERSION_MAJOR "3")
