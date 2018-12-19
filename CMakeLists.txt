@@ -12,6 +12,7 @@ set_target_properties(StructureLinux PROPERTIES
 include(CMake/extlibs.cmake)
 add_subdirectory(Libraries/SampleCode)
 add_subdirectory(External/ImGui)
+add_subdirectory(Source)
 add_subdirectory(Samples/Recorder)
 add_subdirectory(Samples/SimpleStreamer)
 add_custom_target(Samples DEPENDS Recorder SimpleStreamer)

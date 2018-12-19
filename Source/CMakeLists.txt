@@ -1,6 +1,7 @@
 project(Playground)
 include(${SDK_LINUX_DIR}/CMake/project.cmake)
 add_executable(Playground
+    PlotVar.h PlotVar.cpp
     Gui.h Gui.cpp
     Playground.h Playground.cpp
 )
