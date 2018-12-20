@@ -62,7 +62,7 @@ struct AppLog
     void Draw(const char *title, bool *p_opened = NULL)
     {
         // set window 500x400 in size
-        ImGui::SetNextWindowSize(ImVec2(500, 400), ImGuiSetCond_FirstUseEver);
+        ImGui::SetNextWindowSize(ImVec2(200, 200), ImGuiSetCond_FirstUseEver);
 
         ImGui::Begin(title, p_opened); // create the window
 
