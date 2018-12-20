@@ -2,12 +2,16 @@
 #include <map>
 #include <algorithm>
 
+/**
+ * @brief Data plotted in a sparkline
+ *
+ */
 struct PlotVarData
 {
-    ImGuiID ID;
-    ImVector<float> Data;
-    int DataInsertIdx;
-    int LastFrame;
+    ImGuiID ID; /**< A unique identifier for the data to plot*/
+    ImVector<float> Data; /**< The data being plotted */
+    int DataInsertIdx; /**< The index within the array of data */
+    int LastFrame; /**< The last frame at which the data was updated */
 
     PlotVarData() : ID(0), DataInsertIdx(0), LastFrame(-1) {}
 };
@@ -16,11 +20,24 @@ typedef std::map<ImGuiID, PlotVarData> PlotVarsMap;
 static PlotVarsMap g_PlotVarsMap;
 
 // Plot value over time
-// Call with 'value == FLT_MAX' to draw without adding new value to the buffer
+//
+
+/**
+ * @brief Plot a value over time in a sparkline.
+ *
+ * This function plots a value over time on a sparkline by adding to a buffer. To update,
+ * call with 'value == FLT_MAX' to draw without adding new values to the buffer.
+ *
+ * @param label - the label for the plot
+ * @param value - the next value
+ * @param scale_min - the minimum bounds of the plot
+ * @param scale_max - the maximum bounds of the plot
+ * @param buffer_size - the size of the buffer
+ */
 void PlotVar(const char *label, float value, float scale_min, float scale_max, size_t buffer_size)
 {
     if (buffer_size == 0)
-        buffer_size = 120;
+        buffer_size = 400;
 
     ImGui::PushID(label);
     ImGuiID id = ImGui::GetID("");
