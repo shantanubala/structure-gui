@@ -8,19 +8,16 @@
  */
 struct PlotVarData
 {
-    ImGuiID ID; /**< A unique identifier for the data to plot*/
+    ImGuiID ID;           /**< A unique identifier for the data to plot*/
     ImVector<float> Data; /**< The data being plotted */
-    int DataInsertIdx; /**< The index within the array of data */
-    int LastFrame; /**< The last frame at which the data was updated */
+    int DataInsertIdx;    /**< The index within the array of data */
+    int LastFrame;        /**< The last frame at which the data was updated */
 
     PlotVarData() : ID(0), DataInsertIdx(0), LastFrame(-1) {}
 };
 
 typedef std::map<ImGuiID, PlotVarData> PlotVarsMap;
 static PlotVarsMap g_PlotVarsMap;
-
-// Plot value over time
-//
 
 /**
  * @brief Plot a value over time in a sparkline.
@@ -74,6 +71,10 @@ void PlotVar(const char *label, float value, float scale_min, float scale_max, s
     ImGui::PopID();
 }
 
+/**
+ * @brief Flush all of the existing plotted items from the buffer.
+ *
+ */
 void PlotVarFlushOldEntries()
 {
     int current_frame = ImGui::GetFrameCount();

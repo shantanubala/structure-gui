@@ -106,13 +106,13 @@ struct AppLog
  */
 struct RecorderGui::Impl
 {
-    std::mutex lock; // lock for UI thread
-    ConfigCallback configCallback; // callback executed on render
-    ExitCallback exitCallback; // callback executed on quit
+    std::mutex lock;                             // lock for UI thread
+    ConfigCallback configCallback;               // callback executed on render
+    ExitCallback exitCallback;                   // callback executed on quit
     std::unique_ptr<Gui::RenderLoop> renderLoop; // RenderLoop from SampleCode library
 
-    AppConfig currentConfig; // the configuration for the next samples
-    SampleSet currentSamples; // the most recent data samples
+    AppConfig currentConfig;      // the configuration for the next samples
+    SampleSet currentSamples;     // the most recent data samples
     SampleChanges currentChanges; // holds boolean for whether a sample changed
 
     bool requestShutdown = false; // quit the thread if set to true
@@ -398,10 +398,15 @@ void RecorderGui::Impl::renderControls(AppConfig &config)
     }
 }
 
+/**
+ * @brief Render summary statistics from the cameras and IMU.
+ *
+ * @param samples - the latest set of samples from the Structure Core
+ */
 void RecorderGui::Impl::renderStatistics(const SampleSet &samples)
 {
     // buffers for IMU log output
-    char gyroBuffer [50];
+    char gyroBuffer[50];
     char accelBuffer[50];
 
     ImGui::Begin("Info", nullptr, windowFlags);
@@ -419,19 +424,27 @@ void RecorderGui::Impl::renderStatistics(const SampleSet &samples)
 
     sprintf(accelBuffer, "% .5f % .5f % .5f\r\n", samples.accel.value.acceleration().x, samples.accel.value.acceleration().y, samples.accel.value.acceleration().z);
 
-    if (currentConfig.streaming.sensor.streamAccel) {
+    if (currentConfig.streaming.sensor.streamAccel)
+    {
         accelLog.AddLog(accelBuffer);
     }
 
     sprintf(gyroBuffer, "% .5f % .5f % .5f\r\n", samples.gyro.value.rotationRate().x, samples.gyro.value.rotationRate().y, samples.gyro.value.rotationRate().z);
 
-    if (currentConfig.streaming.sensor.streamGyro) {
+    if (currentConfig.streaming.sensor.streamGyro)
+    {
         gyroLog.AddLog(gyroBuffer);
     }
 
     ImGui::End();
 }
 
+/**
+ * @brief Callback function provided to the render loop utility.
+ *
+ * @return true - continue rendering new frames
+ * @return false - exit the render loop
+ */
 bool RecorderGui::Impl::renderCallback()
 {
     Log::logv("Render new frame");
@@ -476,6 +489,13 @@ bool RecorderGui::Impl::renderCallback()
     return true;
 }
 
+/**
+ * @brief Construct a new Recorder Gui:: Recorder Gui object
+ *
+ * @param initialConfig - the starting configuration options
+ * @param configCallback - callback executed on render
+ * @param exitCallback - callback executed on gui exit
+ */
 RecorderGui::RecorderGui(const AppConfig &initialConfig, ConfigCallback configCallback, ExitCallback exitCallback)
 {
     impl = std::make_shared<Impl>();
@@ -485,6 +505,10 @@ RecorderGui::RecorderGui(const AppConfig &initialConfig, ConfigCallback configCa
     std::thread(Impl::threadMain, impl).detach();
 }
 
+/**
+ * @brief Destroy the Recorder Gui:: Recorder Gui object
+ *
+ */
 RecorderGui::~RecorderGui()
 {
     std::unique_lock<std::mutex> u(impl->lock);
@@ -492,6 +516,10 @@ RecorderGui::~RecorderGui()
     impl->renderLoop->wake();
 }
 
+/**
+ * @brief Set ImGui styles and colors.
+ *
+ */
 void RecorderGui::Impl::setStyles()
 {
     ImGuiStyle *style = &ImGui::GetStyle();
